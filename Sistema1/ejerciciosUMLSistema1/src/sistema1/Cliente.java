@@ -30,5 +30,4 @@ public class Cliente extends Persona {
     public String toString() {
         return super.toString() + ", telefono: " + telefono;
     }
-
 }
