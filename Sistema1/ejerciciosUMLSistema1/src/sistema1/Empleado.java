@@ -45,11 +45,21 @@ public class Empleado extends Persona {
         return null;
     }
 
-    public String imprimir() {
+    private String imprimir() {
         String lista = "";
-        for (Empleado listaSubordinado : listaSub) {
-            lista += "\n" + listaSubordinado;
+        if (listaSub.isEmpty()) {
+            lista += "\n******Lista de subordinados de: " + Empleado.super.getNombre() + " vacía******\n";
+        } else {
+            for (Empleado listaSubordinado : listaSub) {
+                lista += "\n\n\t--->  " + listaSubordinado;
+            }
         }
         return lista;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", sueldo bruto: " + sueldoBruto + "\n.........Categoría........." + categoria + imprimir();
+    }
+
 }
