@@ -6,6 +6,7 @@
 package sistema2;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -51,6 +52,46 @@ public class Reservacion {
         listaArticulos.add(art);
     }
 
+    /**
+     * Se encarga de crear una fecha
+     *
+     * @param dia recibe el diaa crear
+     * @param mes recibe el mes a crear
+     * @param anno recibe el año a crear
+     * @return la fecha creada
+     */
+    public static Date crearFecha(int dia, int mes, int anno) {
+        Calendar c = Calendar.getInstance();
+        c.set(anno, mes - 1, dia);
+        return c.getTime();
+    }
+
+    /**
+     * Se encarga de imprimir la lista de instalaciones
+     *
+     * @return la lista
+     */
+    private String imprimirIns() {
+        StringBuilder res = new StringBuilder();
+        for (Instalacion_Deportiva ins : listaInstalaciones) {
+            res.append("\n").append(ins.toString());
+        }
+        return res.toString();
+    }
+
+    /**
+     * Se encarga de imprimir la lista de articulos
+     *
+     * @return la lista
+     */
+    private String imprimirArt() {
+        StringBuilder res = new StringBuilder();
+        for (Articulo art : listaArticulos) {
+            res.append("\n").append(art.toString());
+        }
+        return res.toString();
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -65,6 +106,11 @@ public class Reservacion {
 
     public void setNombreS(String nombreS) {
         this.nombreS = nombreS;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservacion{" + "fecha=" + getFecha() + ", nombreS=" + nombreS + imprimirIns() + imprimirArt() + '}';
     }
 
 }

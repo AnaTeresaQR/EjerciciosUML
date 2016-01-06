@@ -27,4 +27,16 @@ public class ManejadorReservacion {
     public void agregarReservacion(Reservacion reservacion) {
         reservaciones.add(reservacion);
     }
+
+    /**
+     * Se encarga de imprimir la lista de reservaciones
+     * @return la lista
+     */
+    public String imprimir() {
+        StringBuilder res = new StringBuilder();
+        for (Reservacion reservacione : reservaciones) {
+            res.append("\n").append(reservacione.toString());
+        }
+        return res.toString();
+    }
 }
